@@ -6,7 +6,9 @@ import androidx.appcompat.widget.Toolbar
 
 import com.itheima.player.R
 import com.itheima.player.base.BaseActivity
+import com.itheima.player.util.FragmentUtil
 import com.itheima.player.util.ToolBarManager
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.find
 
 class MainActivity : BaseActivity(),ToolBarManager{
@@ -20,4 +22,13 @@ class MainActivity : BaseActivity(),ToolBarManager{
         initMainToolBar()
     }
 
+    override fun initListener() {
+      //设置tab切换的监听
+        bottomBar.setOnTabSelectListener {
+           // it代表参数id
+            val beginTransaction = supportFragmentManager.beginTransaction()
+            beginTransaction.replace(R.id.container, FragmentUtil.fragmentUtil.getFragment(it)!!,it.toString())
+            beginTransaction.commit()
+        }
+    }
 }
