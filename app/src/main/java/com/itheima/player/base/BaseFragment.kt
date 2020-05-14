@@ -54,6 +54,8 @@ abstract class BaseFragment:Fragment(),AnkoLogger {
    open protected fun initListener() {
     }
    open fun myToast(msg:String){
-
+         context?.runOnUiThread {
+             toast(msg)
+         }
     }
 }

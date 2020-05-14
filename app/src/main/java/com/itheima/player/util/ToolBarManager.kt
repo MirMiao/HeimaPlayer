@@ -43,4 +43,7 @@ interface ToolBarManager {
         })*/
 
     }
+    fun initSettingToolbar(){
+        toolbar.setTitle("设置界面")
+    }
 }
