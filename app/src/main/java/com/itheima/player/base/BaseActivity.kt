@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 /**
@@ -35,5 +36,13 @@ import org.jetbrains.anko.toast
     abstract fun getLayoutId(): Int
   open  protected fun myToast(msg:String){
         runOnUiThread{ toast(msg)}
+    }
+
+    /**
+     * 开启一个Activity并且finish
+     */
+    inline fun<reified T:BaseActivity> startActivityAndFinish(){
+        startActivity<T>()
+        finish()
     }
 }
